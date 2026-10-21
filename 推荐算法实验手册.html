@@ -1,0 +1,231 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>推荐算法及应用 · 六次综合实验指导书</title><style>
+:root{--bg:#f6f8fb;--surface:#fff;--ink:#14223a;--muted:#65758b;--line:#e5eaf1;--accent:#335dd5;--accent-soft:#eef3ff;--teal:#087e83;--shadow:0 12px 40px rgba(35,54,91,.06)}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:35px}body{margin:0;background:var(--bg);font-family:Inter,"Microsoft YaHei","PingFang SC","Noto Sans CJK SC",system-ui,sans-serif;color:var(--ink);font-size:15px;line-height:1.85}a{color:var(--accent)}.layout{display:grid;grid-template-columns:278px minmax(0,1fr);min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;overflow:auto;background:#fff;border-right:1px solid var(--line);padding:28px 17px}.brand{font-weight:800;font-size:19px;letter-spacing:-.5px;padding:0 11px}.brand small{display:block;color:var(--muted);font-size:12px;letter-spacing:1px;font-weight:600;margin-top:3px}.sidegroup{font-size:11px;color:#97a2b3;letter-spacing:1.7px;margin:28px 12px 9px;font-weight:800}.navlink{text-decoration:none;display:flex;align-items:flex-start;gap:10px;padding:10px 12px;margin:3px 0;border-radius:11px;color:#596b82;font-size:13px;line-height:1.55;font-weight:600;transition:.2s}.navlink:hover,.navlink.active{background:var(--accent-soft);color:var(--accent)}.navdot{width:22px;height:22px;border-radius:7px;background:#edf1f8;color:#60728f;font-size:11px;font-weight:800;text-align:center;line-height:22px;flex:none}.active .navdot{background:var(--accent);color:#fff}.sidefoot{font-size:11px;color:#a0abba;margin:30px 11px}.content{max-width:1190px;width:100%;margin:0 auto;padding:38px clamp(20px,5vw,70px) 100px}.topline{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:24px}.eyebrow{font-weight:800;color:var(--accent);font-size:12px;letter-spacing:2px}.tools{display:flex;gap:9px}.toolbutton{background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 13px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;color:#4b607b}.toolbutton:hover{border-color:#8ca5f1;color:var(--accent)}.hero{background:linear-gradient(116deg,#122d66,#375bcc 80%,#607be3);color:white;border-radius:24px;padding:clamp(26px,5vw,48px);box-shadow:0 18px 50px rgba(49,80,150,.17);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:290px;height:290px;border:1px solid #ffffff2f;border-radius:50%;top:-115px;right:-90px;box-shadow:0 0 0 55px #ffffff08,0 0 0 110px #ffffff06;pointer-events:none}.hero h1{font-size:clamp(27px,3.5vw,41px);line-height:1.26;margin:12px 0;font-weight:850;letter-spacing:-1px}.hero p{max-width:720px;color:#dae5ff;margin:0}.hero-tag{font-size:11px;font-weight:800;letter-spacing:1.8px;color:#b5c9ff}.statgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:20px 0 27px}.stat{background:white;border:1px solid var(--line);border-radius:15px;padding:18px 20px;box-shadow:var(--shadow)}.stat strong{font-size:25px;line-height:1.25;display:block;letter-spacing:-.8px}.stat span{font-size:12px;color:var(--muted)}.section{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:clamp(22px,4vw,42px);margin:25px 0;scroll-margin-top:22px}.section h2{margin:0 0 24px;font-size:clamp(21px,2.7vw,26px);line-height:1.42;letter-spacing:-.5px;padding-bottom:17px;border-bottom:1px solid var(--line)}.section h3{font-size:16px;line-height:1.5;color:#233f6d;margin:30px 0 12px;display:flex;align-items:center;gap:9px}.section h3:before{content:"";display:block;width:4px;height:18px;border-radius:9px;background:#5374dc;flex:none}.section p{margin:12px 0;color:#44546a}.section li{padding-left:3px;margin:7px 0;color:#405169}.section ol,.section ul{padding-left:24px}.section strong{color:#1e3556}.section code{background:#edf2f9;color:#2150a3;padding:2px 5px;border-radius:5px;font-size:.88em;word-break:break-word}.section pre{background:#152843;padding:18px;border-radius:11px;overflow:auto}.section pre code{background:transparent;color:#eaf1ff;padding:0}.section table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13px;line-height:1.65;margin:18px 0}.section th{text-align:left;background:#f0f4fc;color:#35517b;font-weight:750}.section td,.section th{padding:11px 13px;border-bottom:1px solid var(--line);vertical-align:top}.section tr:last-child td{border-bottom:0}.section blockquote{border-left:3px solid #6c88e8;background:#f4f7fe;margin:15px 0;padding:8px 20px;border-radius:0 10px 10px 0}.section blockquote p{margin:6px 0}.section hr{border:0;border-top:1px solid var(--line);margin:26px 0}.lab{border-top:4px solid #4a6fd7}.appendix{border-top:4px solid #0e9297}.grade{border-top:4px solid #d99b48}.section.lab>h2:before{content:"CLASSROOM LAB  /  04 HOURS";display:block;font-size:10px;letter-spacing:1.8px;color:var(--accent);margin-bottom:7px}.section.appendix>h2:before{content:"REFERENCE / APPENDIX";display:block;font-size:10px;letter-spacing:1.6px;color:var(--teal);margin-bottom:7px}.lab h3:nth-of-type(3)+ol{background:#f7f9fd;padding:17px 18px 17px 42px;border:1px solid #e5ebf5;border-radius:12px}.lab h3:nth-of-type(4)+ul{background:#f3f8fc;padding:14px 18px 14px 36px;border-radius:12px}.searchbox{margin-top:23px;border:1px solid var(--line);width:100%;background:#f7f9fc;border-radius:10px;padding:11px 13px;font:inherit;font-size:13px;outline:0}.searchbox:focus{border-color:#7592e9;background:white}.empty{display:none;text-align:center;padding:30px;color:var(--muted)}.hidden{display:none!important}.mobilemenu{display:none}.section:target{outline:2px solid #c3d0ff;outline-offset:2px}footer{text-align:center;color:#9ca8b8;font-size:12px;margin-top:50px}@media(max-width:900px){.layout{display:block}.sidebar{position:fixed;z-index:10;width:290px;transform:translateX(-110%);transition:transform .2s;box-shadow:var(--shadow)}body.open .sidebar{transform:none}.mobilemenu{display:block}.content{padding:20px 15px 70px}.statgrid{gap:8px}.stat{padding:13px}.stat strong{font-size:22px}}@media(max-width:520px){.statgrid{grid-template-columns:1fr 1fr}.hero{border-radius:16px}.section{border-radius:15px}.tools{gap:5px}.toolbutton{padding:8px 9px}.section table{display:block;overflow-x:auto}.section{padding:19px}}@media print{body{background:#fff}.layout{display:block}.sidebar,.topline,.tools,.searchbox{display:none!important}.content{max-width:none;padding:0}.hero{background:white!important;color:#12243e;box-shadow:none;border:1px solid #ddd}.hero p{color:#344}.statgrid{display:flex}.stat{flex:1;box-shadow:none}.section{page-break-inside:avoid;box-shadow:none;border:1px solid #ddd;margin:16px 0}.section h2{page-break-after:avoid}a{color:#1a3a71}}
+</style></head><body><div class="layout"><aside class="sidebar" id="sidebar"><div class="brand">CineLab <small>RECOMMENDATION SYSTEMS</small></div><input id="search" class="searchbox" placeholder="搜索章节与实验内容…" aria-label="搜索实验内容"><div class="sidegroup">课程导览</div><a href="#overview" class="navlink" data-target="overview"><span class="navdot">•</span><span>统一约定（六次实验不再重复）</span></a><a href="#lab1" class="navlink" data-target="lab1"><span class="navdot">01</span><span>实验一　系统认知、基于内容的推荐与界面个性化（4 课时）</span></a><a href="#lab2" class="navlink" data-target="lab2"><span class="navdot">02</span><span>实验二　新用户冷启动与 ItemCF（4 课时）</span></a><a href="#lab3" class="navlink" data-target="lab3"><span class="navdot">03</span><span>实验三　Spark ALS、算法评价与基础版检查（4 课时）</span></a><a href="#lab4" class="navlink" data-target="lab4"><span class="navdot">04</span><span>实验四　现代推荐系统扩展开发（一）（4 课时）</span></a><a href="#lab5" class="navlink" data-target="lab5"><span class="navdot">05</span><span>实验五　现代推荐系统扩展开发（二）（4 课时）</span></a><a href="#lab6" class="navlink" data-target="lab6"><span class="navdot">06</span><span>实验六　系统集成、项目展示与个人答辩（4 课时）</span></a><a href="#grades" class="navlink" data-target="grades"><span class="navdot">•</span><span>最终等级（成绩上限约束，不是自动给分）</span></a><a href="#appendixa" class="navlink" data-target="appendixa"><span class="navdot">◇</span><span>附录A　Windows环境与离线Starter Kit（课堂内必做）</span></a><a href="#appendixb" class="navlink" data-target="appendixb"><span class="navdot">◇</span><span>附录B　GitHub小组协作与六次提交（课堂内必做）</span></a><a href="#appendixc" class="navlink" data-target="appendixc"><span class="navdot">◇</span><span>附录C　公网部署（挑战版可选扩展）</span></a><div class="sidefoot">六次课堂实验 · 24课时<br>学生发行候选 V2.0</div></aside><main class="content"><div class="topline"><span class="eyebrow">COURSE HANDBOOK / 学生实验手册</span><div class="tools"><button class="toolbutton mobilemenu" id="menu">☰ 目录</button><button class="toolbutton" id="print">打印 / 存为PDF</button></div></div><header class="hero"><div class="hero-tag">PROJECT-BASED LEARNING · 2026</div><h1>推荐算法及应用<br>六次综合实验指导书</h1><p>基于 Spark 与 AI 增强的电影个性化推荐系统。围绕真实数据、真实推荐算法与可运行的系统，以团队协作完成整个项目。</p></header><div class="statgrid"><div class="stat"><strong>6 次</strong><span>完整实验单元</span></div><div class="stat"><strong>24 课时</strong><span>全部任务在课堂内完成</span></div><div class="stat"><strong>3–5 人</strong><span>每组一个 GitHub 私有仓库</span></div></div><div id="sections"><section id="overview" class="section intro" data-title="统一约定（六次实验不再重复）"><h2>统一约定（六次实验不再重复）</h2>
+<ul>
+<li><strong>数据版本</strong>：<code>rec-course-v3-train5-1.0.0</code>；<strong>划分版本</strong>：<code>temporal-v1-cold500-train5-v3</code>。课堂目录 8,459 部电影；固定评价训练 583,502 条、验证 70,366 条、测试 67,792 条。</li>
+<li><strong>算法范围</strong>：基础版必做热门推荐、内容推荐、ItemCF、Spark ALS、冷启动及 Precision@10、Recall@10。UserCF 不要求实现。</li>
+<li><strong>数据隔离</strong>：离线评价只使用冻结的 <code>evaluation/train.csv</code> 拟合；<code>validation.csv</code> 用于调参与检查，<code>test.csv</code> 只在方案固定后用于最终报告。不可把 business 库的完整历史评分用于离线评价训练。历史用户 <code>ml:&lt;id&gt;</code> 与注册用户 <code>app:&lt;id&gt;</code> 不得混用。</li>
+<li><strong>统一评价</strong>：正反馈为评分 ≥4.0；Top-10 排除协议指定的已评分电影；使用教师固定评价用户集合及候选目录；无结果和不足 10 条的用户不得被悄悄移除。基础版至少报告 Precision@10 与 Recall@10，不设必须超过其他算法的分数门槛。</li>
+<li><strong>AI 使用方法</strong>：理解工程与约束 → 自行拆分目标和制定计划 → 逐项实现 → 自检与定位错误 → 接入系统并复核。教师不提供可复制的开发提示词；学生对 AI 生成代码和结果负责。</li>
+<li><strong>交付形式</strong>：每组维护一个GitHub私有仓库，每次课结束前完成一次阶段提交与推送，并现场展示运行结果及测试证据；不要求六篇实验报告。第六次统一提交项目仓库、模型、评价表、简要技术说明和成员贡献记录。<strong>不安排课外补交或额外开发任务</strong>。</li>
+<li><strong>发行边界</strong>：离线运行镜像用于快速搭建基础系统；学生后续实现算法、修改前端属于自行开发任务，可能需要联网重建镜像。教师不承诺完整断网开发构建，也不要求安装或测试阶段B离线构建依赖包。</li>
+<li><strong>环境与协作</strong>：Windows系统检查、离线镜像导入、Starter Kit初始化见附录A及随包独立《Windows实验环境安装与启动指南》；GitHub建库和每次推送见附录B；公网部署见附录C（挑战版选做）。所有工作均在课堂内进行。</li>
+<li><strong>基础自检</strong>：通过教师发行包的诊断入口核查数据库、接口契约与冻结评价输入；学生算法还须提供真实的推荐结果和评价证据。Windows/Docker启动与源码更新以随包对应版本的操作说明为准。不得以协议测试通过冒充推荐效果达标。</li>
+</ul>
+</section><section id="lab1" class="section lab" data-title="实验一　系统认知、基于内容的推荐与界面个性化（4 课时）"><h2>实验一　系统认知、基于内容的推荐与界面个性化（4 课时）</h2>
+<h3>1. 实验目标</h3>
+<p>了解现有推荐系统的前后端与算法接口；利用电影类型特征实现真实的基于内容的个性化推荐；完成小组自己的第一处前端变化。</p>
+<h3>2. 必要原理</h3>
+<ul>
+<li>内容表示：将 <code>genres</code> 转换为多维电影特征（如 Multi-hot 或 TF-IDF）。</li>
+<li>内容相似：余弦相似度衡量候选电影与用户兴趣画像的相近程度。</li>
+<li>用户画像：根据该用户<strong>允许使用的历史正反馈</strong>聚合兴趣，排除已评分电影；无有效画像时不能伪称已有个性化结果。</li>
+<li>工程关系：前端 → FastAPI 推荐路由 → 学生 Provider → 真实电影 Top-N。</li>
+</ul>
+<h3>3. 实验任务</h3>
+<ol>
+<li>参照附录A完成Docker检查、离线镜像导入、Starter Kit首次初始化或日常启动；参照附录B建立小组私有仓库；检查电影浏览、历史用户与现有推荐API，定位算法接入契约。</li>
+<li>使用真实电影类型与用户历史记录，完成 <code>content</code> 推荐，输出最多 10 部可解释的电影；不使用随机或固定电影列表。</li>
+<li>将算法接入现有推荐接口，并通过真实API响应及可操作页面展示结果。当前发行候选的“推荐实验室”可能仍是占位页，学生需在课堂内自主完善展示交互；未完成时继续保持 501，不用假数据掩盖。</li>
+<li>在课堂内完成<strong>至少一项明显可见的前端个性化修改</strong>（视觉风格、实质布局或有效交互任选一种），保留所有既有业务能力。</li>
+</ol>
+<h3>4. 验收标准</h3>
+<ul>
+<li>系统能启动；所用电影与用户ID真实且命名空间正确。</li>
+<li>至少一个有有效历史正反馈的历史用户可得到合法 Top-10；无重复、无已评分电影、排名与分数可追溯。</li>
+<li>Provider 自检和接口调用成功；能口头说明两部电影为何内容相近。</li>
+<li>展示一处真实前端改动，页面仍可完成原有业务操作。</li>
+</ul>
+<h3>5. 成果要求</h3>
+<p>内容推荐代码及模型/特征工件、一次自检记录、实际推荐页面、前端修改对比；本次GitHub提交与推送记录。<strong>课堂内验收</strong>。</p>
+</section><section id="lab2" class="section lab" data-title="实验二　新用户冷启动与 ItemCF（4 课时）"><h2>实验二　新用户冷启动与 ItemCF（4 课时）</h2>
+<h3>1. 实验目标</h3>
+<p>解决用户没有历史行为时的推荐入口；实现基于物品的协同过滤，并理解内容相似与行为共现的差异。</p>
+<h3>2. 必要原理</h3>
+<ul>
+<li>冷启动：没有评分时使用热门榜单或主动收集偏好；有少量评分后可使用内容或物品邻居产生候选。</li>
+<li>ItemCF：由用户—电影交互构造共现与电影相似度，基于用户喜欢的电影汇总候选得分。</li>
+<li>数据稀疏性：低共现支持会影响相似度可靠性；推荐必须排除用户已评分电影。</li>
+</ul>
+<h3>3. 实验任务</h3>
+<ol>
+<li>基于训练数据计算可解释的热门榜单，避免只按极少量高分排序。</li>
+<li>为新注册账号设计<strong>可操作的冷启动入口</strong>：无评分也能得到非个性化结果；选择偏好或产生评分后能体现选择/行为的作用。界面标明推荐策略。</li>
+<li>实现 <code>itemcf</code> 的电影相似度与个性化 Top-10，并接入推荐实验室；自行确定合理的邻居与低支持度处理方法。</li>
+<li>对同一历史用户展示内容推荐和 ItemCF 的结果差异，并解释一个真实推荐案例。</li>
+</ol>
+<h3>4. 验收标准</h3>
+<ul>
+<li>新账号零评分时可得到明确来源的推荐，不能把热门榜单标成个性化结果。</li>
+<li>新用户产生有效偏好或评分后有可验证的推荐变化，或明确说明尚不能个性化的原因。</li>
+<li>ItemCF 基于真实训练交互，结果无重复且排除已评分电影；至少一个历史用户正常出结果。</li>
+<li>能说明 ItemCF 与基于内容推荐分别依赖什么数据。</li>
+</ul>
+<h3>5. 成果要求</h3>
+<p>热门、冷启动与 ItemCF 实现及模型工件，前端演示结果，自检/测试记录及本次GitHub推送。<strong>课堂内验收</strong>。</p>
+</section><section id="lab3" class="section lab" data-title="实验三　Spark ALS、算法评价与基础版检查（4 课时）"><h2>实验三　Spark ALS、算法评价与基础版检查（4 课时）</h2>
+<h3>1. 实验目标</h3>
+<p>理解 LFM 与 ALS 的关系；运行 Spark ALS 并生成真实 Top-10；以同一评价协议比较经典算法。</p>
+<h3>2. 必要原理</h3>
+<ul>
+<li>LFM 将用户、电影映射为隐向量，以内积预测评分；ALS 通过交替最小二乘求解隐向量。</li>
+<li><strong>评分预测</strong>与<strong>Top-N排序</strong>目标不相同；模型可以正常训练却得到较低的推荐命中率。</li>
+<li>Precision@10、Recall@10 需要明确相关性阈值、候选过滤和固定评价用户。</li>
+</ul>
+<h3>3. 实验任务</h3>
+<ol>
+<li>使用冻结的 train 完成 Spark MLlib ALS 显式评分训练，保留真实模型、参数及版本清单；生成指定历史用户的 Top-10 并接入已有接口。</li>
+<li>为 Popular、Content、ItemCF、ALS 按统一协议产出 validation 的 Precision@10 和 Recall@10；记录有效用户数及推荐覆盖情况。</li>
+<li>对比四种方法的结果，给出至少两条<strong>依据真实数据</strong>的解释；不允许根据 validation/test 正例直接拼凑推荐列表。</li>
+<li>集中检查基础版功能是否完整；课堂剩余时间用于修复基础算法及系统接入问题。</li>
+</ol>
+<h3>4. 验收标准</h3>
+<ul>
+<li>ALS 使用真实 Spark 训练，模型版本与数据摘要一致；历史用户的结果合法并排除已评分电影。</li>
+<li>提交四方法的真实比较表，指标计算方式一致；无结果用户未被剔除。</li>
+<li>能说明 LFM/ALS 关系、评分预测与Top-N效果的区别；不能以“ALS必须优于ItemCF”为达标条件。</li>
+<li>基础版能够展示内容、ItemCF、ALS、热门及冷启动策略。</li>
+</ul>
+<h3>5. 成果要求</h3>
+<p>ALS 模型及清单、真实推荐结果、统一算法评价表、简短结果分析、基础版检查记录及本次GitHub推送。<strong>课堂内预验收</strong>。</p>
+</section><section id="lab4" class="section lab" data-title="实验四　现代推荐系统扩展开发（一）（4 课时）"><h2>实验四　现代推荐系统扩展开发（一）（4 课时）</h2>
+<h3>1. 实验目标</h3>
+<p>从标准扩展中选择两项，完成第一项能够独立验收的真实功能。</p>
+<h3>2. 必要原理</h3>
+<ul>
+<li><strong>S1 加权RRF</strong>：对不同算法返回的名次进行融合，不能直接混加不同量纲的原始分数。</li>
+<li><strong>S2 LLM工具调用</strong>：模型负责解析自然语言并选择受控工具；电影查询与推荐结果必须来自真实业务接口。</li>
+<li><strong>S3 Kafka事件驱动</strong>：前端行为 → 事件消息 → 消费端更新短期兴趣 → 后续推荐改变；接收到消息不等于已实现实时推荐。</li>
+</ul>
+<h3>3. 实验任务</h3>
+<ol>
+<li>小组在课堂内确定 S1/S2/S3 中的两项（标准版三选二），明确负责人和验收证据。</li>
+<li>实现第一项，最低要求如下：
+<ul>
+<li><strong>S1</strong>：融合至少两路真实候选，去重、过滤、排序，并显示推荐来源及名次。</li>
+<li><strong>S2</strong>：自然语言意图解析＋结构化输出＋实际 Function Calling；返回数据库中真实电影并说明依据，使用外部模型API，不部署或微调模型。</li>
+<li><strong>S3</strong>：真实评分/收藏产生Kafka事件；消费端更新可追溯的短期兴趣，并使后续推荐发生规则明确的变化。</li>
+</ul>
+</li>
+<li>运行真实功能测试，排查与现有登录、推荐API的集成问题。</li>
+</ol>
+<h3>4. 验收标准</h3>
+<ul>
+<li>所选扩展可完成一个真实端到端演示，不接受静态页面、Mock或随机结果。</li>
+<li>S1能追溯来源，S2能检查工具调用和电影ID真实性，S3能追踪事件、状态及推荐变化。</li>
+<li>原基础版功能无回归问题。</li>
+</ul>
+<h3>5. 成果要求</h3>
+<p>第一扩展模块源码、真实操作演示、最少一项正常与一项异常测试证据及本次GitHub推送。<strong>课堂内验收</strong>。</p>
+</section><section id="lab5" class="section lab" data-title="实验五　现代推荐系统扩展开发（二）（4 课时）"><h2>实验五　现代推荐系统扩展开发（二）（4 课时）</h2>
+<h3>1. 实验目标</h3>
+<p>完成第二项标准扩展，并将两项扩展与已有推荐流程集成，形成具有小组特色的系统。</p>
+<h3>2. 必要原理</h3>
+<p>复习小组选用的第二项模块的输入、输出和失败处理；理解扩展技术的价值必须由<strong>行为变化、真实调用或可复现结果</strong>证明，而不是由技术组件名称证明。</p>
+<h3>3. 实验任务</h3>
+<ol>
+<li>按实验四同一标准实现第二项扩展（S1/S2/S3三选二，不新增必做技术）。</li>
+<li>联调两项扩展与基础推荐系统；完善必要的前端交互与状态反馈，使小组作品具备可辨识的特点。</li>
+<li>开展正常、无结果、错误输入或外部服务不可用等场景测试，并保留证据。</li>
+<li>若基础版尚未完成，本次应优先修复核心算法与评价，不要求用扩展功能掩盖基础功能缺失。</li>
+</ol>
+<h3>4. 验收标准</h3>
+<ul>
+<li>两项扩展分别能够真实运行并说明用途；基本输入输出与权限约束正确。</li>
+<li>已实现功能具有明确错误或无结果状态，不能静默伪造数据。</li>
+<li>系统基本操作与三种核心算法保持可用；能够解释至少一项扩展与经典推荐的关系。</li>
+</ul>
+<h3>5. 成果要求</h3>
+<p>两项标准扩展的源码及测试、联调界面、关键技术说明及本次GitHub推送。<strong>课堂内验收</strong>。</p>
+</section><section id="lab6" class="section lab" data-title="实验六　系统集成、项目展示与个人答辩（4 课时）"><h2>实验六　系统集成、项目展示与个人答辩（4 课时）</h2>
+<h3>1. 实验目标</h3>
+<p>完成系统集成检查、统一成果提交和个人技术答辩，证明推荐功能真实、工程可以复现。</p>
+<h3>2. 必要原理</h3>
+<p>完整推荐链路：数据与用户行为 → 模型/候选 → 推荐接口 → 过滤排序 → 前端结果；区分“系统运行成功”“算法正确”“效果良好”三种判断。</p>
+<h3>3. 实验任务</h3>
+<ol>
+<li>检查环境启动、注册评分收藏、历史用户演示、三个核心算法、热门与冷启动、评价结果及小组界面改造。</li>
+<li>展示所完成的标准扩展；挑战版团队展示全部三项标准扩展及一项真实有效的创新。</li>
+<li>提交最终项目与简短技术说明（结构、数据版本、模型参数、评价表、测试证据、成员分工及AI协作中关键决策）。</li>
+<li>每位成员参加现场答辩；教师可随机指定用户、算法或常见异常进行检查。</li>
+</ol>
+<h3>4. 验收标准</h3>
+<ul>
+<li>推荐和指标真实、可复现，不存在用测试标签拟合、伪造结果或把历史匿名用户当真实账号的情况。</li>
+<li>基础版包含三种核心算法、热门、冷启动与评价；标准版在此基础上实现S1/S2/S3至少两项；挑战版完成三项并有可验证创新。</li>
+<li>界面具有至少一项实质变化，原有业务功能保持可用。</li>
+<li>学生能够指出相关代码、输入输出、关键参数和真实故障处理方式，而非只演示AI生成页面。</li>
+</ul>
+<h3>5. 成果要求</h3>
+<p>最终可运行项目、真实模型与指标、测试记录、简要成果说明、最终GitHub仓库地址和全员现场答辩；本次课堂内完成最终提交。</p>
+<hr />
+</section><section id="grades" class="section grade" data-title="最终等级（成绩上限约束，不是自动给分）"><h2>最终等级（成绩上限约束，不是自动给分）</h2>
+<table>
+<thead>
+<tr>
+<th>等级</th>
+<th>必须满足</th>
+<th style="text-align:right">建议成绩上限</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基础版</td>
+<td>完成热门、内容、ItemCF、ALS、冷启动、评价、前端真实接入及个性化改造</td>
+<td style="text-align:right">79</td>
+</tr>
+<tr>
+<td>标准版</td>
+<td>完成基础版，再从 S1 RRF、S2 LLM 工具调用、S3 Kafka 实时行为推荐中完成任意两项</td>
+<td style="text-align:right">89</td>
+</tr>
+<tr>
+<td>挑战版</td>
+<td>完成基础版与全部三项标准扩展，再完成一项有效创新</td>
+<td style="text-align:right">100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>重要提醒</strong>：公网部署仅作为挑战版可选创新，不强制购买服务器、配置域名或开放个人电脑端口。由于全部工作限制在课堂内，时间不足的小组优先保证基础版。阶段验收不另外布置课外补交；等级及成绩按实际完成度、真实性、理解程度和个人答辩综合判定。</p>
+<hr />
+</section><section id="appendixa" class="section appendix" data-title="附录A　Windows环境与离线Starter Kit（课堂内必做）"><h2>附录A　Windows环境与离线Starter Kit（课堂内必做）</h2>
+<p><strong>适用范围</strong>：首轮为Windows x64、Docker Desktop（WSL2后端）、Linux/amd64镜像。不要求额外安装Ubuntu，不要求在宿主机安装MySQL、Node或Python才能启动教师提供的基础网站。具体版本要求以学生发行包内《Windows实验环境安装与启动指南》为准。</p>
+<h3>A1. 首次使用顺序</h3>
+<ol>
+<li>检查Windows版本、硬件虚拟化、WSL2、Docker Desktop与磁盘空间，确保Docker Engine处于Linux容器模式。已有Docker的电脑不要重复安装WSL；有其他课程项目时先核对项目、端口和数据卷。</li>
+<li>将教师提供的<strong>同一发行版本</strong>完整学生包解压到本人可写目录，找到同时包含<code>compose.yaml</code>、<code>deployment</code>、<code>data</code>的项目根目录。不要用旧版Starter Kit脚本替换新包工具。</li>
+<li>使用发行包内的校验工具检查文件和镜像归档，按《学生快速开始》先运行<strong>离线镜像导入</strong>，再运行<strong>首次初始化</strong>；第一次导入镜像不等于已建数据库。</li>
+<li>初始化成功后启动网站，用浏览器访问启动工具实际显示的网址（默认<code>http://127.0.0.1:8080</code>），完成电影查询、注册登录、评分和收藏检查。初始化后只有MySQL处于运行状态、网站尚未启动，是正常现象。</li>
+<li>每次上课通过发行包的启动工具打开网站，下课使用停止工具；<strong>不要反复初始化</strong>。保存项目源码和小组Git提交。</li>
+</ol>
+<p>学生优先使用发行包内的BAT入口；如电脑安全管理已明确允许、但CMD受限，才按详细指南使用对应PowerShell备用入口。<strong>不为完成实验自行解除安全策略、重置WSL或删除Docker数据卷。</strong></p>
+<h3>A2. 修改源代码后的操作边界</h3>
+<p>教师离线运行包已验证的是<strong>导入镜像、数据库初始化、业务运行和停启持久化</strong>，不是完全离线的源码构建环境。修改Python推荐算法或Vue源码后，必须使用最终发行包实际提供的代码更新/构建方法；可能需要联网安装构建依赖。<strong>单纯保存源码、刷新网页或重启容器，不保证新代码已进入镜像。</strong></p>
+<p>如果发行包尚未提供经实际验收的自动构建入口，学生应在课堂内使用AI辅助查阅工程中的Dockerfile、构建配置和接口契约，制定可验证的更新步骤；不得自行删除数据库卷来处理构建问题，不得修改冻结数据或权限机制绕过报错。教师不要求完全断网重建或任意新增依赖。</p>
+<h3>A3. 安装、初始化和运行的验收底线</h3>
+<ul>
+<li>环境：Docker Engine有Server响应、<code>OSType=linux</code>、Compose可用；WSL2后端确认；其他课程的容器和卷不受影响。</li>
+<li>文件与镜像：学生包校验通过，离线镜像标签和平台正确；不要将镜像归档、私密密钥或Docker数据卷提交GitHub。</li>
+<li>初始化：已导入正式课堂数据，电影8,459部、历史匿名用户5,000名、历史评分798,775条；初始化返回成功状态。</li>
+<li>运行：<code>db</code>/<code>api</code>/<code>web</code>健康，电影查询、注册登录和评分/收藏保存成功；停止与再次启动后数据仍在。</li>
+<li>教学起点：热门、内容、ItemCF、ALS、冷启动等算法接口初始为<code>501</code>“尚未实现”，这是等待学生开发的状态；推荐实验室页面也可能保留占位提示。</li>
+</ul>
+<p>遇到端口占用、Docker无法启动、镜像缺失、密钥不完整、旧数据库卷、构建失败或下载失败时，按照<strong>当前发行包</strong>的详细安装指南停止并记录错误；不要使用<code>docker compose down -v</code>、<code>docker volume prune</code>、<code>docker system prune</code>、重置WSL或恢复Docker出厂设置作为常规修复办法。</p>
+<p><strong>课时安排</strong>：实验一首先确保每组至少一台电脑具备可运行Starter Kit的条件；环境问题由教师集中分流，小组在课堂内继续开展算法学习。所有安装与开发均按六次课堂时间安排，不另设课后作业。</p>
+</section><section id="appendixb" class="section appendix" data-title="附录B　GitHub小组协作与六次提交（课堂内必做）"><h2>附录B　GitHub小组协作与六次提交（课堂内必做）</h2>
+<ol>
+<li><strong>实验一建库</strong>：每组创建一个GitHub私有仓库，邀请组员协作，并邀请组员、向教师开放仓库查看权限；推荐先将教师Starter Kit保存为初始版本，再进行个性化修改。</li>
+<li><strong>每次课提交</strong>：每次实验结束前，在仓库中形成能反映该次任务进展的提交并推送到GitHub。允许尚未完成的模块，但应明确记录已完成内容、真实测试状态和待解决问题；不得伪称通过验收。</li>
+<li><strong>推荐工作流</strong>：先查看<code>git status</code>，检查变更，再<code>git add</code>、<code>git commit</code>、<code>git push</code>；多人协作先同步主分支，避免覆盖其他组员的工作。建议按<code>lab1</code>至<code>lab6</code>使用标签或在README中记录阶段版本。</li>
+<li><strong>保护数据</strong>：不得上传<code>.env</code>、密钥、密码、个人令牌、数据库卷、真实登录Cookie、<code>node_modules</code>、虚拟环境、大型模型工件及教师参考答案。正式MovieLens/TMDB文件按课程授权与教师发布规则处理；仓库通过说明与本地导入脚本引用数据包，不把整套数据库推到GitHub。</li>
+<li><strong>课堂验收</strong>：教师检查仓库可访问性、最新提交和实际系统成果，不以提交次数、代码行数或AI生成比例代替个人贡献评价。</li>
+</ol>
+<p><strong>最低证据</strong>：每次课在教师课堂通知的提交入口提供本次commit ID或GitHub链接（未公布固定网址时不自行猜测），并现场展示任务结果。GitHub暂时无法访问时，先保留本地Git提交并记录错误，课堂内经教师确认后处理，不因网络故障删除成果。</p>
+</section><section id="appendixc" class="section appendix" data-title="附录C　公网部署（挑战版可选扩展）"><h2>附录C　公网部署（挑战版可选扩展）</h2>
+<p><strong>目标</strong>：在保持核心业务和数据安全的前提下，使外部设备可通过HTTPS访问团队作品，并能够演示至少一条真实推荐链路。无需自购服务器，不允许通过暴露个人电脑数据库端口来冒充线上部署。</p>
+<p>可自行选择合规且费用可控的平台；优先使用免费或校内已有资源。允许采取“线上演示前端＋受控后端API”架构，但只有静态页面、假电影数据或无法调用真实推荐结果时，不算完成系统部署。</p>
+<p><strong>验收条件</strong>：提供可访问URL（或教师可访问的受控演示地址）、部署架构简图、运行环境与启动说明，并现场证明HTTPS访问、登录/电影查询/推荐流程、数据库不对公网暴露、密钥由平台安全配置、错误状态不泄露内部信息。不得上传完整训练/测试评分或个人数据到未经批准的服务，不得在公网使用默认口令或开放MySQL 3306。</p>
+<p>公网部署属于<strong>挑战版的一种可选创新</strong>：不替代基础版，不替代标准版三选二，也不要求所有小组付费或课后维护服务。无法获得合适云资源的小组可选择其他同等挑战方向。</p>
+</section></div><div id="empty" class="empty">没有找到匹配的章节，请更换关键词。</div><footer>《推荐算法及应用》综合实验指导书 · 学生发行候选 V2.0<br>本文为单文件HTML，可直接在浏览器中打开与打印。</footer></main></div><script>
+const links=[...document.querySelectorAll('.navlink')],sections=[...document.querySelectorAll('.section')];function setActive(){let current=sections[0]?.id;for(let s of sections){if(s.getBoundingClientRect().top<175)current=s.id}links.forEach(l=>l.classList.toggle('active',l.dataset.target===current))}window.addEventListener('scroll',setActive,{passive:true});setActive();document.getElementById('search').addEventListener('input',e=>{const q=e.target.value.trim().toLocaleLowerCase();let visible=0;sections.forEach(s=>{let ok=!q||s.textContent.toLocaleLowerCase().includes(q);s.classList.toggle('hidden',!ok);if(ok)visible++});document.getElementById('empty').style.display=visible?'none':'block';links.forEach(a=>a.classList.toggle('hidden',document.getElementById(a.dataset.target).classList.contains('hidden')));});document.getElementById('print').addEventListener('click',()=>window.print());document.getElementById('menu').addEventListener('click',()=>document.body.classList.toggle('open'));links.forEach(l=>l.addEventListener('click',()=>document.body.classList.remove('open')));
+</script></body></html>
