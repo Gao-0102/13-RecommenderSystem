@@ -65,7 +65,13 @@ PROVIDERS: dict[Algorithm, Recommender] = {}
 # The business API imports only the business-model provider.  Evaluation models
 # must be registered from a separate evaluation entry point.
 from recommender.student.content import ContentProvider
+from recommender.student.popular import PopularProvider
+from recommender.student.cold_start import ColdStartProvider
+from recommender.student.itemcf import ItemCFProvider
 PROVIDERS[Algorithm.content] = ContentProvider(Path("models/business/content-genre-v1/manifest.json"))
+PROVIDERS[Algorithm.popular] = PopularProvider(Path("models/business/popular-v1/manifest.json"))
+PROVIDERS[Algorithm.cold_start] = ColdStartProvider(Path("models/business/cold-start-v1/manifest.json"))
+PROVIDERS[Algorithm.itemcf] = ItemCFProvider(Path("models/business/itemcf-v1/manifest.json"))
 
 
 def recommend(algorithm: Algorithm, request: RecommendationRequest) -> RecommendationResult:

@@ -51,8 +51,8 @@ export function errorMessage(error: unknown): string {
   if (error.status === 409) return '这个登录名已被使用，请换一个'
   if (error.status === 422) return '输入格式不正确，请检查字段、评分范围或访问地址'
   if (error.status === 429) return `登录尝试过于频繁，请在 ${error.retryAfter || 60} 秒后重试`
-  if (error.status === 501) return '尚未实现，等待算法接入'
-  if (error.status === 503) return '服务尚未就绪，请稍后重试或联系教师检查后端'
+  if (error.status === 501) return '该功能即将上线，敬请期待'
+  if (error.status === 503) return '服务暂时不可用，请稍后重试'
   return error.message
 }
 

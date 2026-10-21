@@ -23,7 +23,7 @@ void fetchGenres()
   <div class="page"><div class="page-heading"><p class="eyebrow">EXPLORE THE ARCHIVE</p><h1>电影库<span class="heading-dot">.</span></h1><p>片名、年代、类型，总有一种方式让你遇见好电影。</p></div>
     <form class="filter-bar" @submit.prevent="search()"><div class="search-field"><label for="movie-search">搜索片名</label><el-input id="movie-search" v-model="q" :maxlength="100" placeholder="输入中文或原始片名" :prefix-icon="Search" clearable /></div><div class="genre-field"><label for="genre-select">电影类型</label><el-select id="genre-select" v-model="genre" placeholder="全部类型" clearable><el-option v-for="value in genres" :key="value" :label="value" :value="value" /></el-select></div><el-button type="primary" native-type="submit" :loading="loading">搜索电影</el-button></form>
     <StatePanel v-if="genreError" :error="genreError" @retry="fetchGenres" />
-    <div class="result-caption"><span>{{ data ? `${data.total.toLocaleString()} 部电影` : '电影档案' }}</span><span>原始编号升序 · 每页 12 部</span></div>
+    <div class="result-caption"><span>{{ data ? `${data.total.toLocaleString()} 部电影` : '电影档案' }}</span><span>每页 12 部</span></div>
     <StatePanel :loading="loading" :error="error" :empty="!!data && !data.items.length" title="没有找到匹配的电影" description="尝试简短片名，或清除类型筛选。" @retry="fetchMovies"><div class="movie-grid"><MovieCard v-for="movie in data?.items" :key="movie.movie_id" :movie="movie" /></div></StatePanel>
     <PageNav :page="page" :total="data?.total || 0" @change="search" />
   </div>
