@@ -1,4 +1,6 @@
 from typing import Annotated
+import json
+from pathlib import Path
 
 from fastapi import APIRouter, Query, Request
 from pydantic import Field
@@ -39,7 +41,11 @@ def algorithms():
 
 @router.get("/experiments/evaluations")
 def evaluations():
-    raise APIError(501, "EVALUATION_NOT_IMPLEMENTED", "评价流程留给学生实现；业务API不连接evaluation数据库", {
+    metrics_path = Path("/app/models/business/eval_metrics.json")
+    if metrics_path.exists():
+        data = json.loads(metrics_path.read_text(encoding="utf-8"))
+        return data
+    raise APIError(501, "EVALUATION_NOT_IMPLEMENTED", "评价模型文件不存在，请先运行 scripts/build_eval_metrics.py", {
         "status": "not_implemented", "metrics": None, "dataset_version": DATASET, "split_version": SPLIT})
 
 
