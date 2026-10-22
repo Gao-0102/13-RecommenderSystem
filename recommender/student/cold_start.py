@@ -47,9 +47,13 @@ class ColdStartProvider:
 
     def recommend(self, request: RecommendationRequest) -> RecommendationResult:
         require(request.runtime_mode == "business", "冷启动模型只能用于业务模式", "DATA_MODE_INVALID")
-        history = read_history(request)
-        rated_ids = {feedback.movie_id for feedback in history.ratings}
-        positive_count = sum(1 for f in history.ratings if float(f.rating) >= self._positive_threshold)
+        if request.subject_kind == "public":
+            rated_ids = set()
+            positive_count = 0
+        else:
+            history = read_history(request)
+            rated_ids = {feedback.movie_id for feedback in history.ratings}
+            positive_count = sum(1 for f in history.ratings if float(f.rating) >= self._positive_threshold)
 
         if positive_count == 0:
             items = self._popular_branch(rated_ids, request.limit)

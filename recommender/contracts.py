@@ -18,7 +18,7 @@ class Algorithm(StrEnum):
 
 @dataclass(frozen=True)
 class RecommendationRequest:
-    subject_kind: Literal["app", "ml"]
+    subject_kind: Literal["app", "ml", "public"]
     subject_id: int
     limit: int
     runtime_mode: Literal["business", "evaluation"]

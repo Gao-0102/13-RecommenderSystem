@@ -21,7 +21,7 @@ onMounted(fetchMovies)
       <div class="hero-art"><div class="orbital orbital-one" /><figure class="hero-frame"><img :src="heroImage" alt="清新蓝绿色调的电影放映机与胶片主题插画" /><figcaption><span>CINE DISCOVERY</span><strong>今晚，看什么？</strong></figcaption></figure></div>
     </section>
     <div class="intro-strip"><p><el-icon aria-hidden="true"><Reading /></el-icon><strong>真实片库</strong><span>来自真实观影社区的电影档案</span></p><p><el-icon aria-hidden="true"><Search /></el-icon><strong>自由探索</strong><span>按片名与类型发现电影</span></p><RouterLink to="/movies">开始浏览 <span aria-hidden="true">↗</span></RouterLink></div>
-    <section class="recommendation-section"><div class="section-heading"><div><p class="eyebrow">MADE FOR YOUR TASTE</p><h2>你的下一部<span class="heading-dot">.</span></h2><p class="muted">根据你的评分与收藏，持续更新专属片单。</p></div><RouterLink to="/experiments" class="text-link">查看实验室 →</RouterLink></div><div class="recommendation-columns"><AlgorithmPanel label="为你推荐" :columns="2" :limit="4" :endpoint="auth.account ? '/me/recommendations/content' : null" /><AlgorithmPanel label="热门推荐" :columns="2" :limit="4" :endpoint="auth.account ? '/me/recommendations/popular' : null" /></div></section>
+    <section class="recommendation-section"><div class="section-heading"><div><p class="eyebrow">MADE FOR YOUR TASTE</p><h2>你的下一部<span class="heading-dot">.</span></h2><p class="muted">根据你的评分与收藏，持续更新专属片单。</p></div><RouterLink to="/experiments" class="text-link">查看实验室 →</RouterLink></div><div v-if="auth.account" class="recommendation-columns"><AlgorithmPanel label="为你推荐" :columns="2" :limit="4" :endpoint="'/me/recommendations/content'" /><AlgorithmPanel label="融合推荐 (RRF)" :columns="2" :limit="4" :endpoint="'/me/recommendations/rrf'" /></div><AlgorithmPanel :label="auth.account ? '热门推荐' : '热门精选'" :columns="5" :limit="10" :endpoint="auth.account ? '/me/recommendations/popular' : '/public/recommendations/popular'" :empty-subject="'热门片库'" /><p v-if="!auth.account" class="guest-hint">登录后开启专属推荐与融合推荐 →</p></section>
     <section class="browse-section"><div class="section-heading"><div><p class="eyebrow">THE FILM ARCHIVE</p><h2>从片库出发<span class="heading-dot">.</span></h2><p class="muted">从精心整理的电影档案里，挑一部今晚的电影。</p></div><RouterLink to="/movies" class="text-link">查看全部 <el-icon aria-hidden="true"><ArrowRight /></el-icon></RouterLink></div><StatePanel :loading="loading" :error="error" :empty="!!data && !data.items.length" @retry="fetchMovies"><div class="movie-grid"><MovieCard v-for="movie in data?.items" :key="movie.movie_id" :movie="movie" /></div></StatePanel></section>
   </div>
 </template>
@@ -58,4 +58,5 @@ onMounted(fetchMovies)
   .hero-art { display: flex; }
   .recommendation-section { margin-top: 30px; }
 }
+.guest-hint { grid-column: 1 / -1; color: var(--muted); font-size: 13px; padding: 14px 22px; border: 1px dashed var(--border); border-radius: 8px; text-align: center; margin-top: 4px; }
 </style>

@@ -55,8 +55,8 @@ def check_model(path: Path, mode: str, algorithm: str, data: FrozenData | None =
 
 def check_request(request):
     from .contracts import RecommendationRequest
-    require(isinstance(request, RecommendationRequest) and request.subject_kind in {"ml", "app"} and
-            type(request.subject_id) is int and 0 < request.subject_id <= 2**64-1 and type(request.limit) is int and
+    require(isinstance(request, RecommendationRequest) and request.subject_kind in {"ml", "app", "public"} and
+            type(request.subject_id) is int and (request.subject_kind == "public" or 0 < request.subject_id <= 2**64-1) and type(request.limit) is int and
             1 <= request.limit <= 50 and request.runtime_mode in {"business", "evaluation"} and
             request.dataset_version == DATASET and request.split_version == SPLIT,
             "推荐输入身份、数量或版本非法", "REQUEST_CONTEXT_INVALID")

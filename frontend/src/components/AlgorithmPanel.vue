@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onScopeDispose, ref, watch } from 'vue'
+import { computed, onScopeDispose, onMounted, onUnmounted, ref, watch } from 'vue'
 import { Connection, MagicStick, ChatDotRound } from '@element-plus/icons-vue'
 import http, { ApiError } from '../api'
 import StatePanel from './StatePanel.vue'
@@ -77,6 +77,14 @@ function rankIcon(rank: number) {
   return ''
 }
 watch(() => props.endpoint, load, { immediate: true })
+
+let invalidateTimer: ReturnType<typeof setTimeout> | null = null
+function onRatingInvalidated() {
+  if (invalidateTimer) clearTimeout(invalidateTimer)
+  invalidateTimer = setTimeout(() => { void load() }, 500)
+}
+onMounted(() => { window.addEventListener('rating-updated', onRatingInvalidated) })
+onUnmounted(() => { window.removeEventListener('rating-updated', onRatingInvalidated); if (invalidateTimer) clearTimeout(invalidateTimer) })
 
 const explainEndpoint = computed(() => props.endpoint ? props.endpoint + '/explain' : null)
 async function fetchExplain() {

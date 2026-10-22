@@ -30,8 +30,11 @@ class PopularProvider:
     def recommend(self, request: RecommendationRequest) -> RecommendationResult:
         require(request.runtime_mode == "business",
                 "business model cannot run in evaluation mode", "DATA_MODE_INVALID")
-        history = read_history(request)
-        rated = {feedback.movie_id for feedback in history.ratings}
+        if request.subject_kind == "public":
+            rated = set()
+        else:
+            history = read_history(request)
+            rated = {feedback.movie_id for feedback in history.ratings}
         candidates: list[tuple[float, str]] = []
         for movie_id in self._top50:
             if movie_id in rated:

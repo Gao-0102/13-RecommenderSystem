@@ -81,6 +81,13 @@ def history_recommendations(ml_user_id: IdPath, algorithm: Algorithm, request: R
     return invoke(algorithm, "ml", uid, query.limit)
 
 
+@router.get("/public/recommendations/{algorithm}", response_model=RecommendationResult)
+def public_recommendations(algorithm: Algorithm, query: Annotated[RecommendationQuery, Query()]):
+    if algorithm not in (Algorithm.popular, Algorithm.cold_start):
+        raise APIError(400, "PUBLIC_ALGORITHM_LIMITED", "公开路由仅支持 popular 与 cold_start 策略")
+    return invoke(algorithm, "public", 0, query.limit)
+
+
 @router.get("/me/recommendations/{algorithm}/explain")
 def my_explain(algorithm: Algorithm, actor: ActorDependency, query: Annotated[RecommendationQuery, Query()]):
     return _explain_for(algorithm, "app", actor.account_id, query.limit)
