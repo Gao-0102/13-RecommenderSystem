@@ -16,8 +16,9 @@ const ratingPage = ref(1), available = ref<Algorithm[]>([]), registryError = ref
 const algorithmGroups = computed(() => [
   { label: '个性化推荐', items: available.value.filter(a => ['content', 'itemcf', 'als'].includes(a.algorithm)) },
   { label: '热门与新用户', items: available.value.filter(a => ['popular', 'cold_start'].includes(a.algorithm)) },
+  { label: 'RRF 多算法融合', items: available.value.filter(a => ['rrf'].includes(a.algorithm)) },
 ])
-const algorithmNames: Record<string, string> = { content: '内容推荐', itemcf: 'ItemCF', als: 'Spark ALS', popular: '热门榜单', cold_start: '新用户冷启动' }
+const algorithmNames: Record<string, string> = { content: '内容推荐', itemcf: 'ItemCF', als: 'Spark ALS', popular: '热门榜单', cold_start: '新用户冷启动', rrf: 'RRF融合推荐' }
 const algorithmLabel = computed(() => algorithmNames[algorithm.value] || algorithm.value)
 const subject = computed(() => source.value === 'ml' ? (selected.value ? `ml:${selected.value}` : '') : auth.account?.subject_key || '')
 const endpoint = computed(() => !subject.value ? null : source.value === 'ml' ? `/demo/history-users/${selected.value}/recommendations/${algorithm.value}` : `/me/recommendations/${algorithm.value}`)

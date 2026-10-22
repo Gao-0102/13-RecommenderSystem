@@ -46,6 +46,9 @@ services:
       APP_DB_NAME: rec_course_v3_fcfb9a195a_business
       APP_DB_USER: course_app
       APP_ENV_FILE: /dev/null
+      APP_LLM_ENDPOINT: https://api.deepseek.com/v1/chat/completions
+      APP_LLM_API_KEY: sk-your-deepseek-api-key
+      APP_LLM_MODEL: deepseek-chat
     secrets: [app_password, jwt_secret]
     volumes:
       - *package
