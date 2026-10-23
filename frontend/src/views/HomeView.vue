@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import { ArrowRight, Search, Reading } from '@element-plus/icons-vue'
 import http from '../api'
 import { useAuth } from '../stores/auth'
@@ -13,6 +13,24 @@ const { data, error, loading, load } = useRemote<Page<Movie>>()
 const fetchMovies = () => load(async () => (await http.get<Page<Movie>>('/movies', { params: { per_page: 4 } })).data)
 const heroImage = `https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=${encodeURIComponent('Bright cinematic editorial scene for a movie discovery website: elegant film reel and projector silhouette against soft teal and cyan gradient background, cool aqua light rays and floating translucent particles, mint and turquoise color palette, clean minimal composition, premium modern design aesthetic, no text, no watermark, soft diffused lighting')}&image_size=landscape_16_9`
 onMounted(fetchMovies)
+
+const historyCount = ref(0)
+const historyLoaded = ref(false)
+async function loadHistoryCount() {
+  if (!auth.account) { historyCount.value = 0; historyLoaded.value = true; return }
+  try {
+    const [r, f] = await Promise.all([
+      http.get<Page<unknown>>('/me/ratings', { params: { per_page: 1, page: 1 } }),
+      http.get<Page<unknown>>('/me/favorites', { params: { per_page: 1, page: 1 } }),
+    ])
+    historyCount.value = (r.data.total ?? 0) + (f.data.total ?? 0)
+  } catch { historyCount.value = 0 }
+  historyLoaded.value = true
+}
+watch(() => auth.account, (a) => { historyLoaded.value = false; loadHistoryCount() }, { immediate: true })
+const onRatingUpdated = () => { historyLoaded.value = false; loadHistoryCount() }
+window.addEventListener('rating-updated', onRatingUpdated)
+onBeforeUnmount(() => window.removeEventListener('rating-updated', onRatingUpdated))
 </script>
 <template>
   <div class="page home-page">
@@ -21,7 +39,7 @@ onMounted(fetchMovies)
       <div class="hero-art"><div class="orbital orbital-one" /><figure class="hero-frame"><img :src="heroImage" alt="清新蓝绿色调的电影放映机与胶片主题插画" /><figcaption><span>CINE DISCOVERY</span><strong>今晚，看什么？</strong></figcaption></figure></div>
     </section>
     <div class="intro-strip"><p><el-icon aria-hidden="true"><Reading /></el-icon><strong>真实片库</strong><span>来自真实观影社区的电影档案</span></p><p><el-icon aria-hidden="true"><Search /></el-icon><strong>自由探索</strong><span>按片名与类型发现电影</span></p><RouterLink to="/movies">开始浏览 <span aria-hidden="true">↗</span></RouterLink></div>
-    <section class="recommendation-section"><div class="section-heading"><div><p class="eyebrow">MADE FOR YOUR TASTE</p><h2>你的下一部<span class="heading-dot">.</span></h2><p class="muted">根据你的评分与收藏，持续更新专属片单。</p></div><RouterLink to="/experiments" class="text-link">查看实验室 →</RouterLink></div><div v-if="auth.account" class="recommendation-columns"><AlgorithmPanel label="为你推荐" :columns="2" :limit="4" :endpoint="'/me/recommendations/content'" /><AlgorithmPanel label="融合推荐 (RRF)" :columns="2" :limit="4" :endpoint="'/me/recommendations/rrf'" /></div><AlgorithmPanel :label="auth.account ? '热门推荐' : '热门精选'" :columns="5" :limit="10" :endpoint="auth.account ? '/me/recommendations/popular' : '/public/recommendations/popular'" :empty-subject="'热门片库'" /><p v-if="!auth.account" class="guest-hint">登录后开启专属推荐与融合推荐 →</p></section>
+    <section class="recommendation-section"><div class="section-heading"><div><p class="eyebrow">MADE FOR YOUR TASTE</p><h2>你的下一部<span class="heading-dot">.</span></h2><p class="muted">根据你的评分与收藏，持续更新专属片单。</p></div><RouterLink to="/experiments" class="text-link">查看实验室 →</RouterLink></div><div v-if="auth.account && historyLoaded && historyCount > 0" class="recommendation-columns"><AlgorithmPanel label="为你推荐" :columns="2" :limit="4" :endpoint="'/me/recommendations/content'" /><AlgorithmPanel label="融合推荐 (RRF)" :columns="2" :limit="4" :endpoint="'/me/recommendations/rrf'" /></div><AlgorithmPanel :label="auth.account && historyLoaded && historyCount > 0 ? '热门推荐' : '热门精选'" :columns="5" :limit="10" :endpoint="auth.account && historyLoaded && historyCount > 0 ? '/me/recommendations/popular' : '/public/recommendations/popular'" :empty-subject="'热门片库'" /><p v-if="!auth.account" class="guest-hint">登录后开启专属推荐与融合推荐 →</p><p v-else-if="historyLoaded && historyCount === 0" class="guest-hint">给几部电影评分或加入收藏后，专属推荐与融合推荐将自动开启 →</p></section>
     <section class="browse-section"><div class="section-heading"><div><p class="eyebrow">THE FILM ARCHIVE</p><h2>从片库出发<span class="heading-dot">.</span></h2><p class="muted">从精心整理的电影档案里，挑一部今晚的电影。</p></div><RouterLink to="/movies" class="text-link">查看全部 <el-icon aria-hidden="true"><ArrowRight /></el-icon></RouterLink></div><StatePanel :loading="loading" :error="error" :empty="!!data && !data.items.length" @retry="fetchMovies"><div class="movie-grid"><MovieCard v-for="movie in data?.items" :key="movie.movie_id" :movie="movie" /></div></StatePanel></section>
   </div>
 </template>
